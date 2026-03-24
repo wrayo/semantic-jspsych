@@ -1,0 +1,24 @@
+{
+  "name": "new-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "semantic-fluency-plugin.js",
+  "scripts": {
+    "serve": "http-server . -a 127.0.0.1 -p 4173 -c-1",
+    "test": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@jspsych/plugin-html-button-response": "^2.1.0",
+    "@jspsych/plugin-instructions": "^2.1.0",
+    "http-server": "^14.1.1",
+    "jspsych": "^8.2.3",
+    "playwright": "^1.58.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}

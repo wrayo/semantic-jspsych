@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Psychology Fluency Task v6 Preview</title>
+    <link rel="stylesheet" href="./lib/jspsych-6.3.1/css/jspsych.css" />
+    <link rel="stylesheet" href="./semantic-fluency.css" />
+  </head>
+  <body>
+    <div id="jspsych-target"></div>
+
+    <script>
+      window.semanticFluencyConfig = {
+        displayElement: "jspsych-target",
+        cue: "Psychology",
+        demoCue: "Vehicles",
+        storageKeyPrefix: "psychology-fluency-preview",
+        experimentName: "psychology_fluency_single_task_preview_v6",
+      };
+    </script>
+
+    <script src="./lib/jspsych-6.3.1/jspsych.js"></script>
+    <script src="./lib/jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+    <script src="./lib/jspsych-6.3.1/plugins/jspsych-instructions.js"></script>
+    <script src="./semantic-fluency-plugin-v6.js"></script>
+    <script src="./psychology-only-v6-task.js"></script>
+  </body>
+</html>
