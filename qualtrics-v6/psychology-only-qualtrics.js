@@ -1,7 +1,7 @@
 Qualtrics.SurveyEngine.addOnload(function () {
   var qthis = this;
 
-  var assetBaseUrl = "https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY-NAME";
+  var assetBaseUrl = "https://wrayo.github.io/semantic-jspsych";
   var taskConfig = {
     displayElement: "display_stage",
     participantId: "${e://Field/ResponseID}",
