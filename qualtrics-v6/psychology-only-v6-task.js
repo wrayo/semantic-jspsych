@@ -133,7 +133,7 @@
     config.promptHtml ||
     "<p>Please generate as many words or short phrases related to this category as you can.</p>" +
     "<p>Enter <strong>one word or short phrase at a time</strong>, then press Enter.</p>" +
-    "<p>Please do not repeat responses within the same list, and avoid simple variants such as &quot;memory&quot; and &quot;memories&quot;.</p>";
+    "<p>Please do not repeat responses within the same list.</p>";
 
   jsPsych.data.addProperties({
     participant_id: participantId,
@@ -169,7 +169,7 @@
       prompt:
         "<p>Please generate as many words or short phrases related to this category as you can.</p>" +
         "<p>Enter <strong>one word or short phrase at a time</strong>, then press Enter.</p>" +
-        "<p>Please do not repeat responses within the same list, and avoid simple variants such as &quot;car&quot; and &quot;cars&quot;.</p>",
+        "<p>Please do not repeat responses within the same list.</p>",
       intro_html:
         "<p>Thank you for taking part in this study.</p>" +
         "<p>You may use the interactive example below to familiarize yourself with the response format and screen layout.</p>" +
@@ -219,7 +219,6 @@
         "<ul>" +
           "<li>Press Enter after each response.</li>" +
           "<li>Please do not repeat a response within the list.</li>" +
-          "<li>Please avoid plural or suffix variants of the same idea.</li>" +
           "<li>Each response will briefly appear and then fade from the screen.</li>" +
         "</ul>" +
       "</div>",

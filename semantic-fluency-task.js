@@ -125,7 +125,7 @@ jsPsych.data.addProperties({
 const sharedPrompt = `
   <p>Generate as many category members or related concepts as you can.</p>
   <p>Enter <strong>one word or short phrase at a time</strong>, then press Enter.</p>
-  <p>Do not repeat responses within the same list, and avoid simple suffix variants such as "cell" and "cells".</p>
+  <p>Do not repeat responses within the same list.</p>
 `;
 
 // The paper describes duplicates/suffix variants as participant instructions,
@@ -171,7 +171,7 @@ const makeReadyScreen = (cue, phase, position) => ({
           <div class="sf-preview-helper">
             <p>Generate as many category members or related concepts as you can.</p>
             <p>Enter <strong>one word or short phrase at a time</strong>, then press Enter.</p>
-            <p>Do not repeat responses within the same list, and avoid simple suffix variants such as "car" and "cars".</p>
+            <p>Do not repeat responses within the same list.</p>
           </div>
 
           <div class="sf-preview-form">
@@ -233,7 +233,6 @@ timeline.push({
         <ul>
           <li>Press Enter after every response.</li>
           <li>Do not repeat a response within the same list.</li>
-          <li>Avoid plural or suffix variants of the same idea, such as "cell" and "cells".</li>
           <li>Earlier responses will briefly appear and then fade from the screen.</li>
         </ul>
       </div>
