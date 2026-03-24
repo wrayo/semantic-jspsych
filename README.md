@@ -39,12 +39,11 @@ Survey content and setup notes live in:
 
 ## GitHub Pages
 
-After this repo is published, the Qualtrics assets should be hostable from GitHub Pages. The Qualtrics wrapper script expects you to set:
+The repository is configured for GitHub Pages deployment through the workflow in
+`.github/workflows/deploy-pages.yml`.
 
-- `assetBaseUrl = "https://<your-github-username>.github.io/<your-repo-name>"`
+The public Pages build serves the Qualtrics-compatible assets from `qualtrics-v6/`,
+including a simple landing page and a standalone `v6` preview page.
 
-inside `qualtrics-v6/psychology-only-qualtrics.js`.
-
-The `qualtrics-v6/index.html` page provides a simple hosted landing page and links to the standalone `v6` preview page.
-
-This repo also includes a GitHub Actions workflow that can deploy the repository to GitHub Pages after the repo is pushed.
+The Qualtrics wrapper in `qualtrics-v6/psychology-only-qualtrics.js` is configured
+to load assets from this repository's GitHub Pages site.
