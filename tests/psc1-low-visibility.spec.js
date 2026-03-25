@@ -6,9 +6,12 @@ test("low-visibility PSC 1 page exposes noindex and records entry timing", async
   const robotsMeta = page.locator('meta[name="robots"]');
   await expect(robotsMeta).toHaveAttribute("content", /noindex/);
   await expect(page.getByRole("heading", { name: "PSC 1 Brain Dump" })).toBeVisible();
+  await expect(page.locator("body")).not.toContainText(/\bPsychology\b/);
 
   await page.getByRole("button", { name: "Next" }).click();
+  await expect(page.locator("body")).not.toContainText(/\bPsychology\b/);
   await page.getByRole("button", { name: "Next" }).click();
+  await expect(page.locator("body")).not.toContainText(/\bPsychology\b/);
   await page.getByRole("button", { name: "Start Brain Dump" }).click();
 
   const input = page.locator("#sf-input");

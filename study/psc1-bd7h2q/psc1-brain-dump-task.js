@@ -155,11 +155,11 @@ const makeDemoScreen = () => ({
   prompt: `
     <p>This practice round is just to get you comfortable with the layout.</p>
     <p>Type one word or short phrase at a time, then press Enter.</p>
-    <p>The real PSC 1 brain dump will use the cue <strong>Psychology</strong>.</p>
+    <p>The real PSC 1 brain dump will begin right after this practice round.</p>
   `,
   intro_html: `
     <p>Before the real task begins, try a short practice round so you can get a feel for the pace.</p>
-    <p>Think of the main task as a rapid-fire PSC 1 brain dump: what ideas about psychology are ready to come to mind right away?</p>
+    <p>Think of the main task as a rapid-fire PSC 1 brain dump: what course ideas are ready to come to mind right away?</p>
     <p>When you are ready, click <strong>Start Brain Dump</strong>. The 2-minute task will begin after the countdown.</p>
   `,
   note_html: `
@@ -197,8 +197,8 @@ timeline.push({
     `
       <div class="sf-instructions">
         <h1>PSC 1 Brain Dump</h1>
-        <p>In this activity, you will see the cue <strong>Psychology</strong> on the screen.</p>
-        <p>Your job is to do a fast brain dump of as many psychology ideas as you can within <strong>2 minutes</strong>.</p>
+        <p>In this activity, you will see a course-related prompt on the screen.</p>
+        <p>Your job is to do a fast brain dump of as many course-related ideas as you can within <strong>2 minutes</strong>.</p>
         <p>Think like a PSC 1 student: terms, topics, examples, theorists, methods, phenomena, or anything else that feels connected to psychology.</p>
       </div>
     `,
