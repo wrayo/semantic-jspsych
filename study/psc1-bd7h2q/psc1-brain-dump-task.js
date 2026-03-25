@@ -116,19 +116,9 @@ jsPsych.data.addProperties({
 });
 
 const sharedPrompt = `
-  <p>This is a fast <strong>brain dump</strong> for PSC 1.</p>
-  <p>Type one psychology idea, term, example, or short phrase at a time, then press Enter.</p>
-  <p>Keep going for the full 2 minutes, and try not to repeat yourself within the same list.</p>
-`;
-
-const educationalWrapUp = `
-  <div class="sf-instructions">
-    <h2>Brain Dump Complete</h2>
-    <p>You just completed a <strong>semantic fluency task</strong>, which is a quick way to see which ideas are most available in memory when a category appears.</p>
-    <p>Here is the cool part: when we combine lots of PSC 1 brain dumps, we can build a class-level <strong>mind map</strong> showing which psychology concepts show up fastest, most often, and closest together in students' mental networks.</p>
-    <p>That means your responses are helping us turn a burst of classroom knowledge into a visual map of how introductory psychology is organized in the mind. Very cool, very cognitive science.</p>
-    <p>Click Finish to save or inspect the collected data.</p>
-  </div>
+  <p>This is a fast <strong>brain dump</strong>.</p>
+  <p>Type one idea, term, example, or short phrase at a time, then press Enter.</p>
+  <p>Keep going for the full 2 minutes, and try to avoid submitting the same response again.</p>
 `;
 
 const makeFluencyTrial = () => ({
@@ -149,7 +139,7 @@ const makeFluencyTrial = () => ({
 
 const makeDemoScreen = () => ({
   type: jsPsychSemanticFluencyDemo,
-  cue: "School Supplies",
+  cue: "Vehicles",
   duration_ms: demoDurationMs,
   min_display_ms: responseFadeMs,
   prompt: `
@@ -159,13 +149,12 @@ const makeDemoScreen = () => ({
   `,
   intro_html: `
     <p>Before the real task begins, try a short practice round so you can get a feel for the pace.</p>
-    <p>Think of the main task as a rapid-fire PSC 1 brain dump: what course ideas are ready to come to mind right away?</p>
     <p>When you are ready, click <strong>Start Brain Dump</strong>. The 2-minute task will begin after the countdown.</p>
   `,
   note_html: `
     <div class="sf-example-block">
       <p class="sf-example-tag">Practice Round</p>
-      <p class="sf-example-note"><strong>Please note:</strong> This School Supplies example is just practice. Nothing entered here will be saved or analyzed.</p>
+      <p class="sf-example-note"><strong>Please note:</strong> This Vehicles example is just practice. Nothing entered here will be saved or analyzed.</p>
     </div>
   `,
   continue_label: "Start Brain Dump",
@@ -199,7 +188,6 @@ timeline.push({
         <h1>PSC 1 Brain Dump</h1>
         <p>In this activity, you will see a course-related prompt on the screen.</p>
         <p>Your job is to do a fast brain dump of as many course-related ideas as you can within <strong>2 minutes</strong>.</p>
-        <p>Think like a PSC 1 student: terms, topics, examples, theorists, methods, phenomena, or anything else that feels connected to psychology.</p>
       </div>
     `,
     `
@@ -209,7 +197,7 @@ timeline.push({
           <li>Type one response at a time as a single word or short phrase.</li>
           <li>Press Enter after each response.</li>
           <li>Keep going even if the ideas feel messy. A brain dump does not need to be polished.</li>
-          <li>Do not repeat a response within the same list.</li>
+          <li>Try to avoid submitting the same response again.</li>
         </ul>
       </div>
     `,
@@ -226,15 +214,5 @@ timeline.push({
 timeline.push(makeDemoScreen());
 timeline.push(makeCountdownTrial());
 timeline.push(makeFluencyTrial());
-
-timeline.push({
-  type: jsPsychHtmlButtonResponse,
-  stimulus: educationalWrapUp,
-  choices: ["Finish"],
-  data: {
-    task: "end-screen",
-    phase: "psychology-general",
-  },
-});
 
 jsPsych.run(timeline);

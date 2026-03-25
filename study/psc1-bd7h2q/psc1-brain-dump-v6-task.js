@@ -138,12 +138,12 @@
   var storageKeyPrefix = config.storageKeyPrefix || "psc1-brain-dump";
   var storageKey = storageKeyPrefix + ":" + participantId;
   var cue = config.cue || "Psychology";
-  var demoCue = config.demoCue || "School Supplies";
+  var demoCue = config.demoCue || "Vehicles";
   var promptHtml =
     config.promptHtml ||
-    "<p>This is a fast <strong>brain dump</strong> for PSC 1.</p>" +
-    "<p>Type one psychology idea, term, example, or short phrase at a time, then press Enter.</p>" +
-    "<p>Keep going for the full 2 minutes, and try not to repeat yourself within the same list.</p>";
+    "<p>This is a fast <strong>brain dump</strong>.</p>" +
+    "<p>Type one idea, term, example, or short phrase at a time, then press Enter.</p>" +
+    "<p>Keep going for the full 2 minutes, and try to avoid submitting the same response again.</p>";
 
   jsPsych.data.addProperties({
     participant_id: participantId,
@@ -182,7 +182,6 @@
         "<p>The real PSC 1 brain dump will begin right after this practice round.</p>",
       intro_html:
         "<p>Before the real task begins, try a short practice round so you can get a feel for the pace.</p>" +
-        "<p>Think of the main task as a rapid-fire PSC 1 brain dump: what course ideas are ready to come to mind right away?</p>" +
         "<p>When you are ready, click <strong>Start Brain Dump</strong>. The 2-minute task will begin after the countdown.</p>",
       note_html:
         "<div class='sf-example-block'>" +
@@ -222,7 +221,6 @@
         "<h1>PSC 1 Brain Dump</h1>" +
         "<p>In this activity, you will see a course-related prompt on the screen.</p>" +
         "<p>Your job is to do a fast brain dump of as many course-related ideas as you can within <strong>2 minutes</strong>.</p>" +
-        "<p>Think like a PSC 1 student: terms, topics, examples, theorists, methods, phenomena, or anything else that feels connected to psychology.</p>" +
       "</div>",
       "<div class='sf-instructions'>" +
         "<h2>How to respond</h2>" +
@@ -230,7 +228,7 @@
           "<li>Type one response at a time as a single word or short phrase.</li>" +
           "<li>Press Enter after each response.</li>" +
           "<li>Keep going even if the ideas feel messy. A brain dump does not need to be polished.</li>" +
-          "<li>Do not repeat a response within the same list.</li>" +
+          "<li>Try to avoid submitting the same response again.</li>" +
         "</ul>" +
       "</div>",
     ],
@@ -246,22 +244,6 @@
   timeline.push(makeDemoScreen());
   timeline.push(makeCountdownTrial());
   timeline.push(makeFluencyTrial());
-
-  timeline.push({
-    type: "html-button-response",
-    stimulus:
-      "<div class='sf-instructions'>" +
-      "  <h2>Brain Dump Complete</h2>" +
-      "  <p>You just completed a <strong>semantic fluency task</strong>, which is a quick way to see which ideas are most available in memory when a category appears.</p>" +
-      "  <p>When we combine lots of PSC 1 brain dumps, we can build a class-level <strong>mind map</strong> showing which concepts show up fastest and cluster together in memory.</p>" +
-      "  <p>Click Finish to continue.</p>" +
-      "</div>",
-    choices: ["Finish"],
-    data: {
-      task: "end-screen",
-      phase: "psychology-general",
-    },
-  });
 
   jsPsych.init({
     timeline: timeline,

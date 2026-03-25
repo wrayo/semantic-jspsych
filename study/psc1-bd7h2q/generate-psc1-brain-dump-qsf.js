@@ -10,7 +10,6 @@ const readText = (fileName) => fs.readFileSync(path.join(currentDir, fileName), 
 const introHtml = readText("psc1-brain-dump-intro.html");
 const questionHtml = readText("psc1-brain-dump-question.html");
 const questionJs = readText("psc1-brain-dump-qualtrics.js");
-const endHtml = readText("psc1-brain-dump-end.html");
 const template = JSON.parse(fs.readFileSync(templatePath, "utf8"));
 
 const makeEmbeddedField = (field) => ({
@@ -53,6 +52,7 @@ template.SurveyElements.forEach((element) => {
     element.Payload.forEach((block) => {
       if (block.Description === "Task") {
         block.Description = "PSC1 Brain Dump Task";
+        block.BlockElements = block.BlockElements.filter((item) => item.QuestionID !== "QID3");
       }
     });
   }
@@ -69,11 +69,8 @@ template.SurveyElements.forEach((element) => {
     element.Payload.QuestionDescription = "PSC 1 brain dump task";
     element.Payload.QuestionJS = questionJs;
   }
-
-  if (element.Element === "SQ" && element.PrimaryAttribute === "QID3") {
-    element.SecondaryAttribute = "Nice Work";
-    element.Payload.QuestionText = endHtml;
-    element.Payload.QuestionDescription = "PSC 1 brain dump completion message";
+  if (element.Element === "QC") {
+    element.SecondaryAttribute = "3";
   }
 });
 

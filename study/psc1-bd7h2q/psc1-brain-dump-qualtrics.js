@@ -8,7 +8,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
     storageKeyPrefix: "psc1-brain-dump",
     embeddedDataPrefix: "semantic_fluency_",
     cue: "Psychology",
-    demoCue: "School Supplies",
+    demoCue: "Vehicles",
     durationMs: 120000,
     demoDurationMs: 20000,
     fadeMs: 800,

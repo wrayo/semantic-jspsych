@@ -12,14 +12,13 @@ test("low-visibility PSC 1 page exposes noindex and records entry timing", async
   await expect(page.locator("body")).not.toContainText(/\bPsychology\b/);
   await page.getByRole("button", { name: "Next" }).click();
   await expect(page.locator("body")).not.toContainText(/\bPsychology\b/);
+  await expect(page.locator("body")).toContainText(/Vehicles example is just practice/i);
   await page.getByRole("button", { name: "Start Brain Dump" }).click();
 
   const input = page.locator("#sf-input");
   await input.fill("memory");
   await input.press("Enter");
 
-  await expect(page.getByRole("heading", { name: "Brain Dump Complete" })).toBeVisible({ timeout: 4000 });
-  await page.getByRole("button", { name: "Finish" }).click();
   await expect(page.getByRole("heading", { name: "Brain Dump Saved" })).toBeVisible();
 
   const stored = await page.evaluate(() => {
