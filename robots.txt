@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /study/psc1-bd7h2q/
