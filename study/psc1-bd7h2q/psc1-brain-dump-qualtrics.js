@@ -40,6 +40,48 @@ Qualtrics.SurveyEngine.addOnload(function () {
     document.head.appendChild(link);
   }
 
+  function ensureDisplayStageStyles() {
+    var existing = document.getElementById("sf-display-stage-style");
+    var style;
+
+    if (existing) {
+      return;
+    }
+
+    style = document.createElement("style");
+    style.id = "sf-display-stage-style";
+    style.textContent = [
+      "#display_stage_background {",
+      "  position: fixed !important;",
+      "  left: 0 !important;",
+      "  top: 0 !important;",
+      "  width: 100vw !important;",
+      "  height: 100vh !important;",
+      "  background-color: #f6f7fb !important;",
+      "  z-index: 2147483000 !important;",
+      "}",
+      "#display_stage {",
+      "  position: fixed !important;",
+      "  left: 1vw !important;",
+      "  top: 1vh !important;",
+      "  width: 98vw !important;",
+      "  height: 98vh !important;",
+      "  background: linear-gradient(180deg, #f6f7fb 0%, #edf1f7 100%) !important;",
+      "  border-radius: 15px !important;",
+      "  box-shadow: 1px 1px 1px #999 !important;",
+      "  z-index: 2147483001 !important;",
+      "  overflow-x: hidden !important;",
+      "  overflow-y: auto !important;",
+      "}",
+      "#sf-load-wrap {",
+      "  position: relative !important;",
+      "  z-index: 1 !important;",
+      "}",
+    ].join("\n");
+
+    document.head.appendChild(style);
+  }
+
   function ensureDisplayStage() {
     if (!document.getElementById("display_stage_background")) {
       jQuery("<div id='display_stage_background'></div>").appendTo("body");
@@ -47,6 +89,11 @@ Qualtrics.SurveyEngine.addOnload(function () {
     if (!document.getElementById("display_stage")) {
       jQuery("<div id='display_stage'></div>").appendTo("body");
     }
+  }
+
+  function teardownDisplayStage() {
+    jQuery("#display_stage").remove();
+    jQuery("#display_stage_background").remove();
   }
 
   function loadScript(idx, requiredResources) {
@@ -57,6 +104,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
         }
       })
       .fail(function () {
+        teardownDisplayStage();
         updateStatus(
           "The PSC 1 brain dump could not finish loading.<br>" +
           "Please capture this screen and contact the study team."
@@ -73,6 +121,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
   }
 
   qthis.hideNextButton();
+  ensureDisplayStageStyles();
   ensureDisplayStage();
   ensureStylesheet(siteBaseUrl + "/qualtrics-v6/lib/jspsych-6.3.1/css/jspsych.css");
   ensureStylesheet(siteBaseUrl + "/qualtrics-v6/semantic-fluency.css");
@@ -105,8 +154,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
       Qualtrics.SurveyEngine.setEmbeddedData(prefix + "actual_duration_ms", finalTrial ? String(finalTrial.actual_duration_ms || "") : "");
       Qualtrics.SurveyEngine.setEmbeddedData(prefix + "all_data_json", JSON.stringify(jsPsychInstance.data.get().values()));
 
-      jQuery("#display_stage").remove();
-      jQuery("#display_stage_background").remove();
+      teardownDisplayStage();
       qthis.clickNextButton();
     },
   };
